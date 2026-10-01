@@ -1,0 +1,27 @@
+list Procesar ( set Q, list Alfabeto ) :
+    boolean Valido = true ;
+    set EstadoActual = { Q0, Q1 } ;
+    set Vacio = empty ;
+    list Resultados = [ 'a', 'b' ] ;
+    
+    let NuevoEstado = EstadoActual union Vacio ;
+    
+    insert ( NuevoEstado, Q2 ) ;
+    append ( Resultados, 'c' ) ;
+    
+    if ( Valido == true ) do
+        for ( Simbolo in Alfabeto ) where ( Simbolo != '0' ) do
+            if ( any ( Simbolo, Resultados ) ) do
+                break ;
+            else
+                Valido = false ;
+            end
+        end
+    end
+
+    while ( Valido != false ) do
+        return Resultados ;
+    end
+    
+    return empty ;
+end
